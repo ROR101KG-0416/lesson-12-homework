@@ -9,7 +9,7 @@ The directions for this assignment can be found [here](https://github.com/ROR101
 2) Navigate to the app folder using the command line
 
 ```bash
-cd lesson-10-homework
+cd lesson-12-homework
 
 ```
 
