@@ -1,8 +1,10 @@
 <h1>Restaurants</h1>
 
 <% @restaurants.each do |restaurant| %>
-  <p>
-    <span><%= restaurant.name %></span>
-  </p>
+  <table>
+    <tr>
+      <td><span><%= link_to restaurant.name, restaurant_path(restaurant) %></span></td>
+    </tr>
+  </table>
 <% end %>
 
