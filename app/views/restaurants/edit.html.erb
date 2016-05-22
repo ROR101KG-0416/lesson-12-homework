@@ -1,29 +1,5 @@
+<h3><%= link_to "Back to list of Restaurants", restaurants_path %></h3>
+
 <h2>Edit a restaurant</h2>
 
-<%= form_for @restaurant, url: {action: :update} do |f| %>
-  <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :street %><br>
-    <%= f.text_field :street %>
-  </p>
-  <p>
-    <%= f.label :city %><br>
-    <%= f.text_field :city %>
-  </p>
-  <p>
-    <%= f.label :state %><br>
-    <%= f.text_field :state %>
-  </p>
-  <p>
-    <%= f.label :postal_code %><br>
-    <%= f.text_field :postal_code %>
-  </p>
-  <p>
-    <%= f.label :country %><br>
-    <%= f.text_field :country %>
-  </p>
-  <%= f.submit %>
-<% end %>
+<%= render "form" %>

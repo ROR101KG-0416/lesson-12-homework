@@ -8,6 +8,14 @@
     <span><%= @restaurant.postal_code %></span><br>
     <span><%= @restaurant.country %></span>
   </p>
+  <p>
+    <%= @restaurant.neighborhood.try(:name) %>
+  </p>
+  <ul>
+    <% @restaurant.categories.each do |category| %>
+      <li><%= category.name %></li>
+    <% end %>
+  </ul>
 
   <p><%= link_to "Edit", edit_restaurant_path(@restaurant) %></p>
 
