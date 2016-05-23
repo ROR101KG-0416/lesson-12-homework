@@ -1,43 +1,44 @@
-<% if @restaurant.errors.any? %>
-  <% @restaurant.errors.full_messages.each do |message| %>
-    <p>
-      <%= message %>
-    </p>
-  <% end %>
-<% end %>
+<%= form_for @restaurant, html: { multipart: true} do |f| %>
 
-<%= form_for @restaurant do |f| %>
-  <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :street %><br>
-    <%= f.text_field :street %>
-  </p>
-  <p>
-    <%= f.label :city %><br>
-    <%= f.text_field :city %>
-  </p>
-  <p>
-    <%= f.label :state %><br>
-    <%= f.text_field :state %>
-  </p>
-  <p>
-    <%= f.label :postal_code %><br>
-    <%= f.text_field :postal_code %>
-  </p>
-  <p>
-    <%= f.label :country %><br>
-    <%= f.text_field :country %>
-  </p>
-    <%= f.label :neighborhood %><br>
-    <%= collection_select(:restaurant, :neighborhood_id, Neighborhood.all, :id, :name, include_blank: true) %>
-  <p>
-  <p>
-    <%= f.label :category %><br>
-    <%= collection_check_boxes(:restaurant, :category_ids, Category.all, :id, :name) %>
-  </p>
-  </p>
-  <%= f.submit %>
-<% end %>
+  <% if @restaurant.errors.any? %>
+    <% @restaurant.errors.full_messages.each do |message| %>
+      <p>
+        <%= message %>
+      </p>
+    <% end %>
+  <% end %>
+
+    <p>
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label :street %><br>
+      <%= f.text_field :street %>
+    </p>
+    <p>
+      <%= f.label :city %><br>
+      <%= f.text_field :city %>
+    </p>
+    <p>
+      <%= f.label :state %><br>
+      <%= f.text_field :state %>
+    </p>
+    <p>
+      <%= f.label :postal_code %><br>
+      <%= f.text_field :postal_code %>
+    </p>
+    <p>
+      <%= f.label :country %><br>
+      <%= f.text_field :country %>
+    </p>
+      <%= f.label :neighborhood %><br>
+      <%= collection_select(:restaurant, :neighborhood_id, Neighborhood.all, :id, :name, include_blank: true) %>
+    <p>
+    <p>
+      <%= f.label :category %><br>
+      <%= collection_check_boxes(:restaurant, :category_ids, Category.all, :id, :name) %>
+    </p>
+    </p>
+    <%= f.submit %>
+  <% end %>

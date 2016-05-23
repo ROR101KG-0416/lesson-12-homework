@@ -1,10 +1,12 @@
 class RestaurantsController < ApplicationController
+  before_action :find_restaurant, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+
   def index
     @restaurants = Restaurant.all
   end
 
   def show
-    @restaurant = Restaurant.find_by_id(params[:id])
   end
 
   def new
@@ -24,12 +26,9 @@ class RestaurantsController < ApplicationController
   end
 
   def edit
-    @restaurant = Restaurant.find_by_id(params[:id])
   end
 
   def update
-    @restaurant = Restaurant.find_by_id(params[:id])
-
     if @restaurant.update(restaurant_params)
       redirect_to restaurant_path(@restaurant), notice: "Restaurant saved"
     else
@@ -39,12 +38,15 @@ class RestaurantsController < ApplicationController
   end
 
   def destroy
-    @restaurant = Restaurant.find_by_id(params[:id])
     @restaurant.destroy
     redirect_to restaurants_path
   end
 
   private
+
+  def find_restaurant
+    @restaurant = Restaurant.find_by_id(params[:id])
+  end
 
   def restaurant_params
     params.require(:restaurant).permit(:name, :street, :city, :state, :country, :postal_code, :neighborhood_id, :category_ids => [])
