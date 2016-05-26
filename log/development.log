@@ -1554,3 +1554,450 @@ Processing by RestaurantsController#index as HTML
   [1m[36mNeighborhood Load (0.1ms)[0m  [1mSELECT  "neighborhoods".* FROM "neighborhoods" WHERE "neighborhoods"."id" = ? LIMIT 1[0m  [["id", 4]]
   Rendered restaurants/index.html.erb within layouts/application (7.0ms)
 Completed 200 OK in 18ms (Views: 17.2ms | ActiveRecord: 0.4ms)
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to DeviseCreateUsers (20160526161841)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.5ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160526161841"]]
+  [1m[36m (2.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+
+
+Started GET "/restaurants" for ::1 at 2016-05-26 12:32:54 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RestaurantsController#index as HTML
+  [1m[35mRestaurant Load (0.3ms)[0m  SELECT "restaurants".* FROM "restaurants"
+  [1m[36mNeighborhood Load (0.2ms)[0m  [1mSELECT  "neighborhoods".* FROM "neighborhoods" WHERE "neighborhoods"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mNeighborhood Load (0.1ms)[0m  SELECT  "neighborhoods".* FROM "neighborhoods" WHERE "neighborhoods"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mNeighborhood Load (0.1ms)[0m  [1mSELECT  "neighborhoods".* FROM "neighborhoods" WHERE "neighborhoods"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered restaurants/index.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 361ms (Views: 335.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-05-26 12:33:19 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendered /Users/samwheeler/.rvm/gems/ruby-2.3.0/gems/devise-4.1.1/app/views/devise/shared/_links.html.erb (2.5ms)
+  Rendered /Users/samwheeler/.rvm/gems/ruby-2.3.0/gems/devise-4.1.1/app/views/devise/sessions/new.html.erb within layouts/application (84.2ms)
+Completed 200 OK in 135ms (Views: 114.4ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2016-05-26 12:33:25 -0400
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GGcLylVbS72S8nx28WnU0eA3C0uWDpvzvYK3LIMoq4XVFsjXdzmqqEek0Y7cgcJTmPTpHdAIRT+OyYM4RNxwug==", "user"=>{"email"=>"swheeler111@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["email", "swheeler111@gmail.com"]]
+Completed 401 Unauthorized in 12ms (ActiveRecord: 0.2ms)
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GGcLylVbS72S8nx28WnU0eA3C0uWDpvzvYK3LIMoq4XVFsjXdzmqqEek0Y7cgcJTmPTpHdAIRT+OyYM4RNxwug==", "user"=>{"email"=>"swheeler111@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendered /Users/samwheeler/.rvm/gems/ruby-2.3.0/gems/devise-4.1.1/app/views/devise/shared/_links.html.erb (1.3ms)
+  Rendered /Users/samwheeler/.rvm/gems/ruby-2.3.0/gems/devise-4.1.1/app/views/devise/sessions/new.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 192ms (Views: 29.6ms | ActiveRecord: 0.0ms)
+  [1m[36mUser Load (4.8ms)[0m  [1mSELECT "users".* FROM "users"[0m
+
+
+Started GET "/restaurants" for ::1 at 2016-05-26 13:19:35 -0400
+Processing by RestaurantsController#index as HTML
+  [1m[36mRestaurant Load (1.2ms)[0m  [1mSELECT "restaurants".* FROM "restaurants"[0m
+  [1m[35mNeighborhood Load (0.3ms)[0m  SELECT  "neighborhoods".* FROM "neighborhoods" WHERE "neighborhoods"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mNeighborhood Load (0.1ms)[0m  [1mSELECT  "neighborhoods".* FROM "neighborhoods" WHERE "neighborhoods"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mNeighborhood Load (0.1ms)[0m  SELECT  "neighborhoods".* FROM "neighborhoods" WHERE "neighborhoods"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered restaurants/index.html.erb within layouts/application (27.3ms)
+Completed 200 OK in 75ms (Views: 63.9ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/neighborhoods" for ::1 at 2016-05-26 13:19:38 -0400
+Processing by NeighborhoodsController#index as HTML
+  [1m[36mNeighborhood Load (0.1ms)[0m  [1mSELECT "neighborhoods".* FROM "neighborhoods"[0m
+  Rendered neighborhoods/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 21ms (Views: 20.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/categories" for ::1 at 2016-05-26 13:19:39 -0400
+Processing by CategoriesController#index as HTML
+  [1m[35mCategory Load (1.4ms)[0m  SELECT "categories".* FROM "categories"
+  Rendered categories/index.html.erb within layouts/application (6.5ms)
+Completed 200 OK in 32ms (Views: 25.4ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-05-26 13:19:40 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.8ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (8.1ms)
+Completed 200 OK in 39ms (Views: 28.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2016-05-26 13:19:41 -0400
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.3ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 23ms (Views: 22.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-05-26 13:19:41 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 19ms (Views: 17.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2016-05-26 13:19:42 -0400
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ix87THagT8j0NTw86awoBTYMkJlIhs1gzBfCrQcbq1VGbvhRVMKu3SFjkcTERD6HTs9yzw6AE6z/XPa5wO9wag==", "user"=>{"email"=>"swheeler111@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "swheeler111@gmail.com"]]
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.2ms)
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ix87THagT8j0NTw86awoBTYMkJlIhs1gzBfCrQcbq1VGbvhRVMKu3SFjkcTERD6HTs9yzw6AE6z/XPa5wO9wag==", "user"=>{"email"=>"swheeler111@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendered devise/shared/_links.html.erb (0.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 149ms (Views: 17.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2016-05-26 13:19:44 -0400
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.5ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 27ms (Views: 25.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2016-05-26 13:19:48 -0400
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Bs0v8bBN+q5I1/ezqml71j2R+oVkVjjQkJ0xJ00Qu+DLvOzski8bu52BWkuHgW1URVIY0yJQ5hyj1gUziuRg3w==", "user"=>{"email"=>"swheeler111@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'swheeler111@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (1.9ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "swheeler111@gmail.com"], ["encrypted_password", "$2a$11$TImhCU.N98seXwMr7OyRzeqzVM3fQE4GKAGaKnm.soj/yCrqVo8z2"], ["created_at", "2016-05-26 17:19:49.058958"], ["updated_at", "2016-05-26 17:19:49.058958"]]
+  [1m[36m (1.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2016-05-26 17:19:49.064868"], ["current_sign_in_at", "2016-05-26 17:19:49.064868"], ["last_sign_in_ip", "::1"], ["current_sign_in_ip", "::1"], ["sign_in_count", 1], ["updated_at", "2016-05-26 17:19:49.065482"], ["id", 1]]
+  [1m[35m (1.5ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 184ms (ActiveRecord: 5.9ms)
+
+
+Started GET "/" for ::1 at 2016-05-26 13:19:49 -0400
+Processing by RestaurantsController#index as HTML
+  [1m[36mRestaurant Load (0.2ms)[0m  [1mSELECT "restaurants".* FROM "restaurants"[0m
+  [1m[35mNeighborhood Load (0.1ms)[0m  SELECT  "neighborhoods".* FROM "neighborhoods" WHERE "neighborhoods"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mNeighborhood Load (0.1ms)[0m  [1mSELECT  "neighborhoods".* FROM "neighborhoods" WHERE "neighborhoods"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mNeighborhood Load (0.1ms)[0m  SELECT  "neighborhoods".* FROM "neighborhoods" WHERE "neighborhoods"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered restaurants/index.html.erb within layouts/application (4.7ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 19ms (Views: 17.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/restaurants/new" for ::1 at 2016-05-26 13:19:57 -0400
+Processing by RestaurantsController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mNeighborhood Load (0.2ms)[0m  [1mSELECT "neighborhoods".* FROM "neighborhoods"[0m
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories"
+  Rendered restaurants/_form.html.erb (39.6ms)
+  Rendered restaurants/new.html.erb within layouts/application (43.3ms)
+Completed 200 OK in 60ms (Views: 57.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/restaurants" for ::1 at 2016-05-26 13:19:58 -0400
+Processing by RestaurantsController#index as HTML
+  [1m[36mRestaurant Load (0.2ms)[0m  [1mSELECT "restaurants".* FROM "restaurants"[0m
+  [1m[35mNeighborhood Load (0.1ms)[0m  SELECT  "neighborhoods".* FROM "neighborhoods" WHERE "neighborhoods"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mNeighborhood Load (0.1ms)[0m  [1mSELECT  "neighborhoods".* FROM "neighborhoods" WHERE "neighborhoods"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mNeighborhood Load (0.1ms)[0m  SELECT  "neighborhoods".* FROM "neighborhoods" WHERE "neighborhoods"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered restaurants/index.html.erb within layouts/application (5.6ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 21ms (Views: 19.6ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2016-05-26 13:19:59 -0400
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"HoqbEetgO4bzD/4o/ZIEtM3y0B5rRrA0rn/hkpnBlxTT+1gMyQLakyZZU9DQehI2tTEySC1AbvidNNWGXjVMKw=="}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 7ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2016-05-26 13:19:59 -0400
+Processing by RestaurantsController#index as HTML
+  [1m[36mRestaurant Load (0.2ms)[0m  [1mSELECT "restaurants".* FROM "restaurants"[0m
+  [1m[35mNeighborhood Load (0.1ms)[0m  SELECT  "neighborhoods".* FROM "neighborhoods" WHERE "neighborhoods"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mNeighborhood Load (0.1ms)[0m  [1mSELECT  "neighborhoods".* FROM "neighborhoods" WHERE "neighborhoods"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mNeighborhood Load (0.1ms)[0m  SELECT  "neighborhoods".* FROM "neighborhoods" WHERE "neighborhoods"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered restaurants/index.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 18ms (Views: 16.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/restaurants/new" for ::1 at 2016-05-26 13:20:00 -0400
+Processing by RestaurantsController#new as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-05-26 13:20:00 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 19ms (Views: 18.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/restaurants" for ::1 at 2016-05-26 13:20:05 -0400
+Processing by RestaurantsController#index as HTML
+  [1m[36mRestaurant Load (0.3ms)[0m  [1mSELECT "restaurants".* FROM "restaurants"[0m
+  [1m[35mNeighborhood Load (0.3ms)[0m  SELECT  "neighborhoods".* FROM "neighborhoods" WHERE "neighborhoods"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mNeighborhood Load (0.1ms)[0m  [1mSELECT  "neighborhoods".* FROM "neighborhoods" WHERE "neighborhoods"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mNeighborhood Load (0.1ms)[0m  SELECT  "neighborhoods".* FROM "neighborhoods" WHERE "neighborhoods"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered restaurants/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 20ms (Views: 18.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/restaurants/2/edit" for ::1 at 2016-05-26 13:20:08 -0400
+Processing by RestaurantsController#edit as HTML
+  Parameters: {"id"=>"2"}
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-05-26 13:20:08 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 16ms (Views: 15.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/restaurants" for ::1 at 2016-05-26 13:20:09 -0400
+Processing by RestaurantsController#index as HTML
+  [1m[36mRestaurant Load (0.3ms)[0m  [1mSELECT "restaurants".* FROM "restaurants"[0m
+  [1m[35mNeighborhood Load (0.1ms)[0m  SELECT  "neighborhoods".* FROM "neighborhoods" WHERE "neighborhoods"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mNeighborhood Load (0.1ms)[0m  [1mSELECT  "neighborhoods".* FROM "neighborhoods" WHERE "neighborhoods"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mNeighborhood Load (0.2ms)[0m  SELECT  "neighborhoods".* FROM "neighborhoods" WHERE "neighborhoods"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered restaurants/index.html.erb within layouts/application (6.1ms)
+Completed 200 OK in 18ms (Views: 16.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-05-26 13:22:34 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 39ms (Views: 37.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2016-05-26 13:22:38 -0400
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MRDUCRinE2uKm2/BKt+kSmO3x3amCJWb0/2pBCWR3xYSHwBX/v18MBCvbXtJv/oRT0w+Xj0BnKiRtCJL8vw/ZQ==", "user"=>{"email"=>"swheeler111@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "swheeler111@gmail.com"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.5ms)[0m  [1mUPDATE "users" SET "current_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2016-05-26 17:22:38.492660"], ["sign_in_count", 2], ["updated_at", "2016-05-26 17:22:38.493776"], ["id", 1]]
+  [1m[35m (1.6ms)[0m  commit transaction
+Redirected to http://localhost:3000/restaurants/2/edit
+Completed 302 Found in 146ms (ActiveRecord: 3.3ms)
+
+
+Started GET "/restaurants/2/edit" for ::1 at 2016-05-26 13:22:38 -0400
+Processing by RestaurantsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mRestaurant Load (0.1ms)[0m  SELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mNeighborhood Load (0.1ms)[0m  [1mSELECT "neighborhoods".* FROM "neighborhoods"[0m
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories"
+  [1m[36m (1.3ms)[0m  [1mSELECT "categories".id FROM "categories" INNER JOIN "restaurant_categories" ON "categories"."id" = "restaurant_categories"."category_id" WHERE "restaurant_categories"."restaurant_id" = ?[0m  [["restaurant_id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "categories".id FROM "categories" INNER JOIN "restaurant_categories" ON "categories"."id" = "restaurant_categories"."category_id" WHERE "restaurant_categories"."restaurant_id" = ?  [["restaurant_id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "categories".id FROM "categories" INNER JOIN "restaurant_categories" ON "categories"."id" = "restaurant_categories"."category_id" WHERE "restaurant_categories"."restaurant_id" = ?[0m  [["restaurant_id", 2]]
+  Rendered restaurants/_form.html.erb (9.3ms)
+  Rendered restaurants/edit.html.erb within layouts/application (11.8ms)
+Completed 200 OK in 37ms (Views: 23.2ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/restaurants" for ::1 at 2016-05-26 13:22:45 -0400
+Processing by RestaurantsController#index as HTML
+  [1m[35mRestaurant Load (0.5ms)[0m  SELECT "restaurants".* FROM "restaurants"
+  [1m[36mNeighborhood Load (0.1ms)[0m  [1mSELECT  "neighborhoods".* FROM "neighborhoods" WHERE "neighborhoods"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mNeighborhood Load (0.3ms)[0m  SELECT  "neighborhoods".* FROM "neighborhoods" WHERE "neighborhoods"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mNeighborhood Load (0.1ms)[0m  [1mSELECT  "neighborhoods".* FROM "neighborhoods" WHERE "neighborhoods"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered restaurants/index.html.erb within layouts/application (8.6ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 27ms (Views: 24.8ms | ActiveRecord: 1.1ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2016-05-26 13:22:48 -0400
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"p83QxskKwNWzUkJr+V/1IotpfKkn86QnKhuWZnU8T3qSCATfBoKgGZGdvaBJO8ICPsm9ZrUzDhx0Hmv3LOVmIg=="}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2016-05-26 13:22:48 -0400
+Processing by RestaurantsController#index as HTML
+  [1m[35mRestaurant Load (0.2ms)[0m  SELECT "restaurants".* FROM "restaurants"
+  [1m[36mNeighborhood Load (0.1ms)[0m  [1mSELECT  "neighborhoods".* FROM "neighborhoods" WHERE "neighborhoods"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mNeighborhood Load (0.1ms)[0m  SELECT  "neighborhoods".* FROM "neighborhoods" WHERE "neighborhoods"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mNeighborhood Load (0.1ms)[0m  [1mSELECT  "neighborhoods".* FROM "neighborhoods" WHERE "neighborhoods"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered restaurants/index.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 16ms (Views: 15.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/neighborhoods" for ::1 at 2016-05-26 13:22:49 -0400
+Processing by NeighborhoodsController#index as HTML
+  [1m[35mNeighborhood Load (0.2ms)[0m  SELECT "neighborhoods".* FROM "neighborhoods"
+  Rendered neighborhoods/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 24ms (Views: 23.5ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/neighborhoods/2" for ::1 at 2016-05-26 13:22:51 -0400
+Processing by NeighborhoodsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"MyY2QWqjM0AcggXzO592O/3JXbm4ZaWvG+CtFra67dyJ3FuHYGCL0p2Jr2PapE81crybgz/TKyXJYZ0G/sKZOA==", "id"=>"2"}
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-05-26 13:22:51 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 18ms (Views: 16.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/neighborhoods" for ::1 at 2016-05-26 13:23:06 -0400
+Processing by NeighborhoodsController#index as HTML
+  [1m[36mNeighborhood Load (0.1ms)[0m  [1mSELECT "neighborhoods".* FROM "neighborhoods"[0m
+  Rendered neighborhoods/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 15ms (Views: 14.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/neighborhoods/1" for ::1 at 2016-05-26 13:23:08 -0400
+Processing by NeighborhoodsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mNeighborhood Load (0.1ms)[0m  SELECT  "neighborhoods".* FROM "neighborhoods" WHERE "neighborhoods"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered neighborhoods/show.html.erb within layouts/application (64.7ms)
+Completed 500 Internal Server Error in 73ms (ActiveRecord: 0.1ms)
+
+ActionView::Template::Error (undefined local variable or method `nieghborhoods_path' for #<#<Class:0x007f9bff8789d8>:0x007f9bfe3b2530>
+Did you mean?  neighborhoods_path
+               neighborhood_path):
+    1: <p><%= link_to "Back to Neighborhood List", nieghborhoods_path %></p>
+    2: 
+    3: <h1><%= @neighborhood.name %></h1>
+  app/views/neighborhoods/show.html.erb:1:in `_app_views_neighborhoods_show_html_erb__1622580790420633331_70153980959140'
+
+
+  Rendered /Users/samwheeler/.rvm/gems/ruby-2.3.0@global/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.9ms)
+  Rendered /Users/samwheeler/.rvm/gems/ruby-2.3.0@global/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /Users/samwheeler/.rvm/gems/ruby-2.3.0@global/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/samwheeler/.rvm/gems/ruby-2.3.0@global/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (67.5ms)
+  Rendered /Users/samwheeler/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/samwheeler/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/samwheeler/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/samwheeler/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/samwheeler/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (49.2ms)
+  Rendered /Users/samwheeler/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/samwheeler/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/samwheeler/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (109.2ms)
+
+
+Started GET "/neighborhoods/1" for ::1 at 2016-05-26 13:23:08 -0400
+Processing by NeighborhoodsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mNeighborhood Load (0.1ms)[0m  [1mSELECT  "neighborhoods".* FROM "neighborhoods" WHERE "neighborhoods"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered neighborhoods/show.html.erb within layouts/application (41.0ms)
+Completed 500 Internal Server Error in 45ms (ActiveRecord: 0.1ms)
+
+ActionView::Template::Error (undefined local variable or method `nieghborhoods_path' for #<#<Class:0x007f9bff8789d8>:0x007f9bff97b3d0>
+Did you mean?  neighborhoods_path
+               neighborhood_path):
+    1: <p><%= link_to "Back to Neighborhood List", nieghborhoods_path %></p>
+    2: 
+    3: <h1><%= @neighborhood.name %></h1>
+  app/views/neighborhoods/show.html.erb:1:in `_app_views_neighborhoods_show_html_erb__1622580790420633331_70153992392440'
+
+
+  Rendered /Users/samwheeler/.rvm/gems/ruby-2.3.0@global/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.2ms)
+  Rendered /Users/samwheeler/.rvm/gems/ruby-2.3.0@global/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /Users/samwheeler/.rvm/gems/ruby-2.3.0@global/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/samwheeler/.rvm/gems/ruby-2.3.0@global/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (58.6ms)
+  Rendered /Users/samwheeler/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/samwheeler/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/samwheeler/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/samwheeler/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/samwheeler/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (38.7ms)
+  Rendered /Users/samwheeler/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/samwheeler/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/samwheeler/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (85.8ms)
+
+
+Started GET "/neighborhoods/1" for ::1 at 2016-05-26 13:23:26 -0400
+Processing by NeighborhoodsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mNeighborhood Load (0.1ms)[0m  SELECT  "neighborhoods".* FROM "neighborhoods" WHERE "neighborhoods"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered neighborhoods/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 23ms (Views: 22.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-05-26 13:23:26 -0400
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-05-26 13:23:27 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-05-26 13:23:27 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-05-26 13:23:27 -0400
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-05-26 13:23:27 -0400
+
+
+Started GET "/neighborhoods" for ::1 at 2016-05-26 13:23:28 -0400
+Processing by NeighborhoodsController#index as HTML
+  [1m[36mNeighborhood Load (0.3ms)[0m  [1mSELECT "neighborhoods".* FROM "neighborhoods"[0m
+  Rendered neighborhoods/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 20ms (Views: 18.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/neighborhoods/2/edit" for ::1 at 2016-05-26 13:23:30 -0400
+Processing by NeighborhoodsController#edit as HTML
+  Parameters: {"id"=>"2"}
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-05-26 13:23:30 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 24ms (Views: 23.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/neighborhoods/2/edit" for ::1 at 2016-05-26 13:23:32 -0400
+Processing by NeighborhoodsController#edit as HTML
+  Parameters: {"id"=>"2"}
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-05-26 13:23:32 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 17ms (Views: 15.9ms | ActiveRecord: 0.0ms)
