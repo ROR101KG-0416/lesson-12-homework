@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+10.times do |i|
+	Restaurant.create(name: "Restaurant #{i}", street: "Street #{i}", city: "City #{i}", state: "State #{i}", country: "Country #{i}", postal_code: "Postal Code #{i}")
+end

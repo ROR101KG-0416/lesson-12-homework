@@ -1,0 +1,28 @@
+<h1>Neighborhoods</h1>
+​
+<%= link_to "Add New Neighborhood", new_neighborhood_path %> ||
+<%= link_to "See All Restaurants", restaurants_path %> ||
+<%= link_to "See categories", categories_path %>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+
+
+  <table>
+  <tr>
+    <th>Name</th>
+  </tr>
+  <tbody>
+    <% @neighborhoods.each do |neighborhood| %>
+      <tr>
+        <td><%= link_to(neighborhood.name, neighborhood_path(neighborhood)) %></td>
+        <td><%= link_to "Edit", edit_neighborhood_path(neighborhood) %></td>
+        <td><%= link_to "Delete", neighborhood_path(neighborhood), method: :delete, data: {confirm: "Are you sure you want to delete this?"} %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+

@@ -1,0 +1,10 @@
+<%= form_for @neighborhood, html: {multipart: true} do |f| %>
+
+
+	<p>
+		<%= f.label :name %><br>
+		<%= f.text_field :name %>
+	</p>
+
+		<%= f.submit %>
+<% end %>
