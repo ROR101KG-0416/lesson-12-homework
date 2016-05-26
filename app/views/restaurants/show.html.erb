@@ -1,0 +1,23 @@
+<p><%= link_to "Back to Restaurant List", restaurants_path %></p>
+
+<h1><%= @restaurant.name %></h1>
+
+<p>
+	<span><%= @restaurant.street %></span>
+</p>
+<p>
+	<span><%= @restaurant.city + ", " + @restaurant.state %></span>
+</p>
+<p>
+	<span><%= @restaurant.country + ", " + @restaurant.postal_code %></span>
+</p>
+<p>
+	<span><%= @restaurant.neighborhood.try(:name) %></span>
+</p>
+<p>Categories</p>
+  <ul>
+    <% @restaurant.categories.each do |category| %>
+    <li><%= category.name %></li>
+    <% end %>
+  </ul>
+
