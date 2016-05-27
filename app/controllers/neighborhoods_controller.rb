@@ -1,4 +1,6 @@
 class NeighborhoodsController < ApplicationController
+  before_action :authenticate_user!, only: [:create, :update, :destroy, :edit, :new]
+
   def index
     @neighborhoods = Neighborhood.all
   end
