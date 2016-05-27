@@ -6,6 +6,14 @@
   <p><%= @restaurant.state %></p>
   <p><%= @restaurant.country %></p>
   <p><%= @restaurant.postal_code %></p>
+  <P><%= @restaurant.neighborhood.name %></P>
+
+  <ul>
+    <% @restaurant.categories.each do |category| %>
+    <li><%= category.name %></li>
+    <% end %>
+  </ul>
+
 <% else %>
   <p>Restaurant Not Found!</p>
 <% end %>  

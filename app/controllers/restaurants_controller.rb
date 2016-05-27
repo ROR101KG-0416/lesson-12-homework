@@ -15,7 +15,11 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new(restaurant_params)
 
     if @restaurant.save
+      flash[:notice] = "Restaurant saved successfully"
       redirect_to restaurants_path
+    else
+      flash.now[:error] = "There was a problem saving this Restaurant"
+      render :new
     end
   end
 
@@ -26,9 +30,12 @@ class RestaurantsController < ApplicationController
   def update 
     @restaurant = Restaurant.find_by_id(params[:id])
 
-    @restaurant.update(restaurant_params)
-
-    redirect_to restaurant_path
+    if @restaurant.update(restaurant_params)
+      redirect_to restaurant_path(@restaurant), notice: "Restaurant was updated successfully"
+    else
+      flash.now[:error] = "There was an issue updating this Restaurant"
+      render :edit
+    end
   end
 
   def destroy
@@ -42,7 +49,7 @@ class RestaurantsController < ApplicationController
   private
 
   def restaurant_params
-    params.require(:restaurant).permit(:name, :street, :city, :state, :country, :postal_code)
+    params.require(:restaurant).permit(:name, :street, :city, :state, :country, :postal_code, :neighborhood_id, category_ids: [])
   end
 
 end

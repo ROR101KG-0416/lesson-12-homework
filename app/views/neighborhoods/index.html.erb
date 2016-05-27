@@ -1,0 +1,17 @@
+<%= link_to 'return to restaurant list', restaurants_path %>
+
+<h1>Neighborhoods</h1>
+
+<%= link_to "Add New Neighborhood", new_neighborhood_path %>
+
+<% @neighborhoods.each do |neighborhood| %>
+  <p>
+    <%= link_to(neighborhood.name, neighborhood_path(neighborhood)) %>
+    <span>
+      <%= link_to "edit", edit_neighborhood_path(neighborhood) %>
+    </span>
+    <span>
+      <%= link_to "delete", neighborhood_path(neighborhood), method: :delete, data: { confirm: "Are you sure?" } %>
+    </span>
+  </p>
+<% end %>
