@@ -1,0 +1,29 @@
+<%= link_to 'Return to list of restaurants', restaurants_path %>
+
+<% if @restaurant %>
+
+  <h1><%= @restaurant.name %></h1>
+  <p>Street: <%= @restaurant.street %></p>
+  <p>City: <%= @restaurant.city %></p>
+  <p>State: <%= @restaurant.state %></p>
+  <p>Country: <%= @restaurant.country %></p>
+  <p>Postal Code: <%= @restaurant.postal_code %></p>
+  <p>Neighborhood: <%= @restaurant.neighborhood.try(:name) %></p>
+  <p>Review: <%= @restaurant.review %></p>
+  <p>Categories:</p>
+
+  <ul>
+    <% @restaurant.categories.each do |category| %>
+    <li><%= category.name %></li>
+    <% end %>
+  </ul>
+
+<% else %>
+
+  <p>Restaurant is not found. Please check the name</p>
+
+<% end %>
+
+<% if current_user %>
+<%= link_to "edit", edit_restaurant_path(@restaurant) %>
+<% end %>
