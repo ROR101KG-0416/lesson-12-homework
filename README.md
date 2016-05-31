@@ -1,6 +1,6 @@
-# Lesson 12 Homework
+# Lesson 10 Homework
 
-The directions for this assignment can be found [here](https://github.com/ROR101KG-0416/homework-assignment-instructions/blob/master/lesson_12.md)
+The directions for this assignment can be found [here](https://github.com/ROR101KG-0416/homework-assignment-instructions/blob/master/lesson_10.md)
 
 ## Install Instructions
 
@@ -9,7 +9,7 @@ The directions for this assignment can be found [here](https://github.com/ROR101
 2) Navigate to the app folder using the command line
 
 ```bash
-cd lesson-12-homework
+cd lesson-10-homework
 
 ```
 
