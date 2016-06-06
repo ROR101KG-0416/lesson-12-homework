@@ -1,0 +1,40 @@
+<%= form_for @restaurant do |f| %>
+
+  <p>
+    <b><%= f.label :name %></b>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <b><%= f.label :street %></b>
+    <%= f.text_field :street %>
+  </p>
+  <p>
+    <b><%= f.label :city %></b>
+    <%= f.text_field :city %>
+  </p>
+  <p>
+    <b><%= f.label :state %></b>
+    <%= f.text_field :state %>
+  </p>
+  <p>
+    <b><%= f.label :country %></b>
+    <%= f.text_field :country %>
+  </p>
+  <p>
+    <b><%= f.label :postal_code %></b>
+    <%= f.text_field :postal_code %>
+  </p>
+  <p>
+    <b><%= f.label :neighborhood %></b>
+    <%= collection_select(:restaurant, :neighborhood_id, Neighborhood.all, :id, :name, {include_blank: true}) %>
+  </p>
+  <p>
+    <b><%= f.label :category %></b> <br>
+    <%= collection_check_boxes(:restaurant, :category_ids, Category.all, :id, :name) %>
+  </p>
+
+  <p>
+  <%= f.submit %>
+  </p>
+
+<% end %>
