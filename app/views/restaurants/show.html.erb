@@ -22,8 +22,10 @@
 
 <% end %>
 
-<%= link_to 'edit', edit_restaurant_path(@restaurant) %> 
-<br>
-<%= link_to 'delete', restaurant_path(@restaurant), method: :delete, data: {confirm: "Are you sure you want to delete this restaurant?"} %> 
+<% if current_user %>
+  <%= link_to 'edit', edit_restaurant_path(@restaurant) %> 
+  <br>
+  <%= link_to 'delete', restaurant_path(@restaurant), method: :delete, data: {confirm: "Are you sure you want to delete this restaurant?"} %> 
+<% end %>
 
 <h4 style="bottom: 0px; position: fixed;">  <%= link_to 'Return to NorthEastern Restaurants List', restaurants_path %></h4>
