@@ -1,0 +1,31 @@
+<% if @restaurant %>
+
+  <h1><%= @restaurant.name %></h1>
+
+  <p><b>Street: </b> <i><%= @restaurant.street %></i></p>
+  <p><b>City: </b> <i><%= @restaurant.city %></i></p>
+  <p><b>State: </b> <i><%= @restaurant.state %></i></p>
+  <p><b>Country: </b> <i><%= @restaurant.country %></i></p>
+  <p><b>Postal Code: </b> <i><%= @restaurant.postal_code %></i></p>
+  <p><b>Neighborhood: </b> <i><%= @restaurant.neighborhood.try(:name) %></i></p>
+  
+  <p><b>Categories: </b></p>
+  <ul>
+    <% @restaurant.categories.each do |category| %>
+    <li><i><%= category.name %></i></li>
+    <% end %>
+  </ul>
+  
+<% else %>
+
+  <h1> Restaurant not found </h1>
+
+<% end %>
+
+<% if current_user %>
+  <%= link_to 'edit', edit_restaurant_path(@restaurant) %> 
+  <br>
+  <%= link_to 'delete', restaurant_path(@restaurant), method: :delete, data: {confirm: "Are you sure you want to delete this restaurant?"} %> 
+<% end %>
+
+<h4 style="bottom: 0px; position: fixed;">  <%= link_to 'Return to NorthEastern Restaurants List', restaurants_path %></h4>
