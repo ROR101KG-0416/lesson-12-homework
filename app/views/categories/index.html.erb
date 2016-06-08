@@ -1,0 +1,17 @@
+<%= link_to 'return to restaurant list', restaurants_path %>
+
+<h1>Categories</h1>
+
+<%= link_to "Add New Category", new_category_path %>
+
+<% @categories.each do |category| %>
+  <p>
+    <%= link_to(category.name, category_path(category)) %>
+    <span>
+      <%= link_to "edit", edit_category_path(category) %>
+    </span>
+    <span>
+      <%= link_to "delete", category_path(category), method: :delete, data: { confirm: "Are you sure?" } %>
+    </span>
+  </p>
+<% end %>
